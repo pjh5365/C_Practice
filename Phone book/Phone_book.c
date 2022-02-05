@@ -1,23 +1,22 @@
 //2022-02-05
-//»èÁ¦,Á¤·Ä±â´É ¹Ì±¸Çö Á¦ÀÛ½Ã°£ 1½Ã°£30ºĞ  
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_PERSON 100	//100¸í±îÁöÀÇ Á¤º¸¸¸ÀúÀå 
+#define MAX_PERSON 100	//100ëª…ê¹Œì§€ì˜ ì •ë³´ë§Œì €ì¥ 
 
 typedef struct phonebook{
 	char name[20];
 	char num[20];
 }Phone;
 
-void Road_data(Phone *ptr, int *p_num)	//ÀúÀåµÈ Á¤º¸¸¦ ºÒ·¯¿À´Â ÇÔ¼ö 
+void Road_data(Phone *ptr, int *p_num)	//ì €ì¥ëœ ì •ë³´ë¥¼ ë¶ˆëŸ¬ì˜¤ëŠ” í•¨ìˆ˜ 
 {
-	FILE *fp = fopen("ÀüÈ­¹øÈ£ºÎ.dat", "rt");
+	FILE *fp = fopen("ì „í™”ë²ˆí˜¸ë¶€.dat", "rt");
 	if(fp == NULL)
 	{
-	//	printf("ÆÄÀÏ¿ÀÇÂ¿¡·¯ \n");
+	//	printf("íŒŒì¼ì˜¤í”ˆì—ëŸ¬ \n");
 		return -1;
 	}
 	while(feof(fp) == 0)
@@ -28,13 +27,13 @@ void Road_data(Phone *ptr, int *p_num)	//ÀúÀåµÈ Á¤º¸¸¦ ºÒ·¯¿À´Â ÇÔ¼ö
 	fclose(fp);
 }
 
-void Save_data(Phone *ptr, int num)	//ÀÔ·ÂµÈ Á¤º¸¸¦ µ¥ÀÌÅÍ¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö 
+void Save_data(Phone *ptr, int num)	//ì…ë ¥ëœ ì •ë³´ë¥¼ ë°ì´í„°ì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜ 
 {
 	int i;
-	FILE *fp = fopen("ÀüÈ­¹øÈ£ºÎ.dat", "wt");
+	FILE *fp = fopen("ì „í™”ë²ˆí˜¸ë¶€.dat", "wt");
 	if(fp == NULL)
 	{
-		printf("ÆÄÀÏ¿ÀÇÂ¿¡·¯ \n");
+		printf("íŒŒì¼ì˜¤í”ˆì—ëŸ¬ \n");
 		return -1;
 	}
 	for(i = 0; i < num; i++)
@@ -43,17 +42,17 @@ void Save_data(Phone *ptr, int num)	//ÀÔ·ÂµÈ Á¤º¸¸¦ µ¥ÀÌÅÍ¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö
 	fclose(fp);
 } 
 
-void insert_data(Phone *ptr, int *p_num)	//Á¤º¸¸¦ÀÔ·ÂÇÏ´Â ÇÔ¼ö
+void insert_data(Phone *ptr, int *p_num)	//ì •ë³´ë¥¼ì…ë ¥í•˜ëŠ” í•¨ìˆ˜
 {
 	char exit;
 	while(1)
 	{
-		fputs("ÀÌ¸§°ú ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä (EX)È«±æµ¿ 010-1234-1234) \n", stdout);
-		fputs("ÀÌ¸§°ú ÀüÈ­¹øÈ£ : ", stdout);
+		fputs("ì´ë¦„ê³¼ ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš” (EX)í™ê¸¸ë™ 010-1234-1234) \n", stdout);
+		fputs("ì´ë¦„ê³¼ ì „í™”ë²ˆí˜¸ : ", stdout);
 		scanf("%s %s",ptr[*p_num].name, ptr[*p_num].num);
 		(*p_num)++;
 		getchar();
-		fputs("µ¹¾Æ°¡·Á¸é nÀ» ÀÔ·ÂÇÏ¼¼¿ä : ", stdout);
+		fputs("ëŒì•„ê°€ë ¤ë©´ nì„ ì…ë ¥í•˜ì„¸ìš” : ", stdout);
 		scanf("%c", &exit);
 		getchar();
 		system("cls");
@@ -64,11 +63,11 @@ void insert_data(Phone *ptr, int *p_num)	//Á¤º¸¸¦ÀÔ·ÂÇÏ´Â ÇÔ¼ö
 	return;
 }
 
-void delete_data(Phone *ptr, int *p_num)	//Á¤º¸¸¦ »èÁ¦ÇÏ´Â ÇÔ¼ö  
+void delete_data(Phone *ptr, int *p_num)	//ì •ë³´ë¥¼ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜  
 {
 	int i, j;
 	char name[20];
-	fputs("»èÁ¦ÇÒ ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä : ", stdout);
+	fputs("ì‚­ì œí•  ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš” : ", stdout);
 	scanf("%s", name);
 	getchar();
 	for(i = 0; i < (*p_num); i++)
@@ -85,17 +84,17 @@ void delete_data(Phone *ptr, int *p_num)	//Á¤º¸¸¦ »èÁ¦ÇÏ´Â ÇÔ¼ö
 			return;
 		}
 	}
-	fputs("ÇØ´çÁ¤º¸¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù. \n", stdout);
+	fputs("í•´ë‹¹ì •ë³´ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. \n", stdout);
 	system("PAUSE");
 	system("cls");
 }
 
-void search_data(Phone *ptr, int p_num)	//ÀÌ¸§À¸·Î °Ë»öÇÏ´Â ÇÔ¼ö
+void search_data(Phone *ptr, int p_num)	//ì´ë¦„ìœ¼ë¡œ ê²€ìƒ‰í•˜ëŠ” í•¨ìˆ˜
 {
 	char search[10];
 	int i;
 	
-	printf("°Ë»öÇÒ ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä : ");
+	printf("ê²€ìƒ‰í•  ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš” : ");
 	scanf("%s", search);
 	getchar();
 	
@@ -109,12 +108,12 @@ void search_data(Phone *ptr, int p_num)	//ÀÌ¸§À¸·Î °Ë»öÇÏ´Â ÇÔ¼ö
 			return;
 		}
 	}
-	printf("ÀÔ·ÂÇÑ Á¤º¸¸¦ Ã£Áö¸øÇß½À´Ï´Ù. \n\n");
+	printf("ì…ë ¥í•œ ì •ë³´ë¥¼ ì°¾ì§€ëª»í–ˆìŠµë‹ˆë‹¤. \n\n");
 	system("PAUSE");
 	system("cls");
 }
 
-void print_all(Phone *ptr, int p_num)	//ÀüÈ­¹øÈ£ºÎ¸¦ Ãâ·Â½ÃÅ°´Â ÇÔ¼ö 
+void print_all(Phone *ptr, int p_num)	//ì „í™”ë²ˆí˜¸ë¶€ë¥¼ ì¶œë ¥ì‹œí‚¤ëŠ” í•¨ìˆ˜ 
 {
 	int i;
 	for(i = 0; i < p_num; i++)
@@ -133,7 +132,7 @@ void sort_data(Phone *ptr, int p_num)
 	{
 		for(j = 0; j <i; j++)
 		{
-			if(strcmp(ptr[j].name, ptr[j+1].name) > 0)	//¾ÕÀÇ ÀÌ¸§ÀÌ ´õÅ©¸é 0º¸´Ù Å« °ªÀ» ¹İÈ¯ 
+			if(strcmp(ptr[j].name, ptr[j+1].name) > 0)	//ì•ì˜ ì´ë¦„ì´ ë”í¬ë©´ 0ë³´ë‹¤ í° ê°’ì„ ë°˜í™˜ 
 			{
 				strcpy(tmp.name, ptr[j].name);
 				strcpy(tmp.num, ptr[j].num);
@@ -144,14 +143,14 @@ void sort_data(Phone *ptr, int p_num)
 			}
 		}
 	}
-	fputs("ÀÌ¸§¼øÀ¸·Î Á¤·ÄÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù \n\n", stdout);
+	fputs("ì´ë¦„ìˆœìœ¼ë¡œ ì •ë ¬ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤ \n\n", stdout);
 	system("PAUSE");
 	system("cls");
 }
 
 int main(void)
 {
-	Phone ptr[MAX_PERSON];	//µ¥ÀÌÅÍÀúÀåÀ» À§ÇÑ ¹è¿­
+	Phone ptr[MAX_PERSON];	//ë°ì´í„°ì €ì¥ì„ ìœ„í•œ ë°°ì—´
 	int person_num = 0;
 	int menu;
 	
@@ -159,9 +158,9 @@ int main(void)
 	 
 	while(1)
 	{
-		printf("--------ÀüÈ­¹øÈ£ºÎ-------- \n");
-		printf("1.ÀÔ·Â \n2.»èÁ¦ \n3.°Ë»ö \n4.ÀüÃ¼Ãâ·Â \n5.Á¤·Ä \n6.Á¾·á\n");
-		printf("\n\n¹øÈ£¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä : ");
+		printf("--------ì „í™”ë²ˆí˜¸ë¶€-------- \n");
+		printf("1.ì…ë ¥ \n2.ì‚­ì œ \n3.ê²€ìƒ‰ \n4.ì „ì²´ì¶œë ¥ \n5.ì •ë ¬ \n6.ì¢…ë£Œ\n");
+		printf("\n\në²ˆí˜¸ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš” : ");
 		scanf("%d", &menu);
 		getchar();
 		system("cls");
